@@ -6,6 +6,7 @@ long long int gcd(int a,int b){
 }
 int main(){
     long long int n,cnt;
+    //gcd(a,b) == 1 -> phirma(a*b) = phirma(a)*phirma(b);   
     while(cin >> n){
         if(n == 0) return 0;
         cnt = n;
