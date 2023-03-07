@@ -1,7 +1,8 @@
 #include <iostream>
-#include <vector>
 using namespace std;
-vector<long long >p(10005);
+
+
+
 int phi (long long int n) {
 	long long int result=n;
 	for (int i=2; i*i<=n; ++i)
@@ -15,16 +16,14 @@ int phi (long long int n) {
     return result;
 }
 int main(){
-    long long int n;
+    long long int n, ans= 0;
     cin >> n;
-    p[1] = phi(1);
-    for(int i=2;i<=10000;i++){
-        p[i] = p[i-1] + phi(i);
+    for(int i=2;i<=n;i++){
+        ans += phi(i);
     }
-    int t;
-    while(n--){
-        cin >> t;
-        cout << p[t] * p[t] << endl;
-    }
+    cout << ans;
+
+    //gcd(a,b) == 1 -> phirma(a*b) = phirma(a)*phirma(b);   
+    
     return 0;
 }

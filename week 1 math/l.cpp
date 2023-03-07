@@ -1,21 +1,29 @@
 #include <iostream>
 using namespace std;
-long long int gcd(int a,int b){
-    if(b == 0) return a;
-    return gcd(b,a%b);
+
+
+
+int phi (long long int n) {
+	long long int result=n;
+	for (int i=2; i*i<=n; ++i)
+		if (n % i == 0) {
+			while (n % i == 0)
+				n /= i;
+			result -= result / i;
+		}
+	if (n > 1)
+		result -= result / n;
+    return result;
 }
 int main(){
-    long long int n,cnt;
-    //gcd(a,b) == 1 -> phirma(a*b) = phirma(a)*phirma(b);   
-    while(cin >> n){
-        if(n == 0) return 0;
-        cnt = n;
-        for(int i=1;i*i<=n;i++){
-            if(gcd(n,i)==1){
-                cnt--;
-            }
-        }
-        cout << cnt << endl;
+    long long int n;
+    cin >> n;
+    while(true){
+        if(n == 0) break;
+        cout << phi(n) << endl;
+        cin >> n;
     }
+    //gcd(a,b) == 1 -> phirma(a*b) = phirma(a)*phirma(b);   
+    
     return 0;
 }
